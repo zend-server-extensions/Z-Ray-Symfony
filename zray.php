@@ -138,13 +138,13 @@ class Symfony {
 			$user = $securityToken->getUser();
 			if ($user) {
 				if ($user !== 'anon.') {
-					$userId = $user->getId();
-					$username = $user->getUsername();
-					$salt = $user->getSalt();
-					$password = $user->getPassword();
-					$email = $user->getEmail();
-					$isActive = $user->getIsActive();
-					$roles = $user->getRoles();
+					$userId    = (method_exists($user,'getId'))        ? $user->getId()        : '';
+					$username  = (method_exists($user,'getUsername'))  ? $user->getUsername()  : '';
+					$salt      = (method_exists($user,'getSalt'))      ? $user->getSalt()      : '';
+					$password  = (method_exists($user,'getPassword'))  ? $user->getPassword()  : '';
+					$email     = (method_exists($user,'getEmail'))     ? $user->getEmail()     : '';
+					$isActive  = (method_exists($user,'getIsActive'))  ? $user->getIsActive()  : '';
+					$roles     = (method_exists($user,'getRoles'))     ? $user->getRoles()     : '';
 				} else {
 					$username = 'anonymous';
 				}
