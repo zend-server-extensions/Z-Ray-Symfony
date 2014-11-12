@@ -41,6 +41,9 @@ class Symfony {
 	public function handleRequestExit($context, &$storage) {
 		$request = $context['functionArgs'][0];
 		
+		if (empty($request)) {
+			return;
+		}
 		$ctrl = $request->get('_controller');
 		if (empty($ctrl)) {
 			return;
