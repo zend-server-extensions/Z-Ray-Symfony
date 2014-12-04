@@ -59,7 +59,7 @@ class Symfony {
 			$refclass = new \ReflectionClass($controller);
 			$filename = $refclass->getFileName();
 			$lineno = $refclass->getStartLine();
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			$filename = $lineno = '';
 		}
 		$storage['request'][] = array(
