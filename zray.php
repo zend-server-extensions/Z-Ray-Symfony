@@ -1,5 +1,8 @@
 <?php
-
+/*********************************
+	Symfony Z-Ray Extension
+	Version: 1.00
+**********************************/
 namespace ZRay;
 
 class Symfony {
