@@ -149,7 +149,7 @@ class Symfony {
 					$salt      = (method_exists($user,'getSalt'))      ? $user->getSalt()      : '';
 					$password  = (method_exists($user,'getPassword'))  ? $user->getPassword()  : '';
 					$email     = (method_exists($user,'getEmail'))     ? $user->getEmail()     : '';
-					$isActive  = (method_exists($user,'getIsActive'))  ? $user->getIsActive()  : '';
+					$isActive  = (method_exists($user,'isEnabled'))    ? $user->isEnabled()    : '';
 					$roles     = (method_exists($user,'getRoles'))     ? $user->getRoles()     : '';
 				} else {
 					$username = 'anonymous';
