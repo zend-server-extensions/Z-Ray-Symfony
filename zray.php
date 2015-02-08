@@ -32,7 +32,7 @@ class Symfony {
 		$bundles = $context['returnValue'];
 
 		foreach ($bundles as $bundle) {
-			$storage['bundles'][] = array(
+			$storage['bundles'][] = @array(
 							'name' => $bundle->getName(),
 							'namespace' => $bundle->getNamespace(),
 							'container' => get_class($bundle->getContainerExtension()),
@@ -65,7 +65,7 @@ class Symfony {
 		} catch (\Exception $e) {
 			$filename = $lineno = '';
 		}
-		$storage['request'][] = array(
+		$storage['request'][] = @array(
 						'Controller' => $controller,
 						'Action' => $action,
 						'Filename' => $filename,
@@ -157,7 +157,7 @@ class Symfony {
 			}
 		}
 
-		$storage['security'][] = array(
+		$storage['security'][] = @array(
 						'isAuthenticated' => $isAuthenticated,
 						'username' => $username,
 						'user id' => $userId,
