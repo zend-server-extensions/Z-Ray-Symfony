@@ -19,6 +19,7 @@ class Symfony {
 
 
 	public function eventDispatchExit($context, &$storage) {
+		if(!$context['functionArgs'][1]) { return; }
 		$event = $context['functionArgs'][1];
 		$storage['events'][] = array(	
 						'name' => $event->getName(),
@@ -184,10 +185,9 @@ $zre->setMetadata(array(
 	'logo' => __DIR__ . DIRECTORY_SEPARATOR . 'logo.png',
 ));
 
-$zre->setEnabledAfter('AppKernel::registerBundles');
+$zre->setEnabledAfter('Symfony\Component\HttpFoundation\Request::initialize');
 
 $zre->traceFunction("Symfony\Component\HttpKernel\Kernel::terminate", function(){}, array($zraySymfony, 'terminateExit'));
 $zre->traceFunction("Symfony\Component\HttpKernel\HttpKernel::handle", function(){}, array($zraySymfony, 'handleRequestExit'));
 $zre->traceFunction("Symfony\Component\EventDispatcher\EventDispatcher::dispatch", function(){}, array($zraySymfony, 'eventDispatchExit'));
 $zre->traceFunction("AppKernel::registerBundles", function(){}, array($zraySymfony, 'registerBundlesExit'));
-
