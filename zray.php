@@ -33,7 +33,7 @@ class Symfony {
 		$bundles = $context['returnValue'];
 
 		foreach ($bundles as $bundle) {
-			$storage['bundles'][] = array(
+			$storage['bundles'][] = @array(
 							'name' => $bundle->getName(),
 							'namespace' => $bundle->getNamespace(),
 							'container' => get_class($bundle->getContainerExtension()),
@@ -66,7 +66,7 @@ class Symfony {
 		} catch (\Exception $e) {
 			$filename = $lineno = '';
 		}
-		$storage['request'][] = array(
+		$storage['request'][] = @array(
 						'Controller' => $controller,
 						'Action' => $action,
 						'Filename' => $filename,
@@ -150,7 +150,7 @@ class Symfony {
 					$salt      = (method_exists($user,'getSalt'))      ? $user->getSalt()      : '';
 					$password  = (method_exists($user,'getPassword'))  ? $user->getPassword()  : '';
 					$email     = (method_exists($user,'getEmail'))     ? $user->getEmail()     : '';
-					$isActive  = (method_exists($user,'getIsActive'))  ? $user->getIsActive()  : '';
+					$isEnabled = (method_exists($user,'isEnabled'))    ? $user->isEnabled()    : '';
 					$roles     = (method_exists($user,'getRoles'))     ? $user->getRoles()     : '';
 				} else {
 					$username = 'anonymous';
@@ -158,13 +158,13 @@ class Symfony {
 			}
 		}
 
-		$storage['security'][] = array(
+		$storage['security'][] = @array(
 						'isAuthenticated' => $isAuthenticated,
 						'username' => $username,
 						'user id' => $userId,
 						'roles' => $roles,
 						'authType' => $authType,
-						'isActive' => $isActive,
+						'isEnabled' => $isEnabled,
 						'email' => $email,
 						'attributes' => $attributes,
 						'password' => $password,
