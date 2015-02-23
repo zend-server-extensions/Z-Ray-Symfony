@@ -122,7 +122,7 @@ class Symfony {
 		$salt = '';
 		$password = '';
 		$email = '';
-		$isActive = '';
+		$isEnabled = '';
 		$roles = array();
 		$tokenClass = 'No security token available';
 	
